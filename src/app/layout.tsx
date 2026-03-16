@@ -28,14 +28,18 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-<header>
-  <nav>
-    <Link href="/">Home</Link>
-    <Link href="/posts">Posts</Link>
-  </nav>
-</header>        
+      <header>
+        <nav>
+          <Link href="/">Home</Link> // 홈페이지 링크: <a></a>태그 대신 사용
+          <Link href="/posts">Posts</Link> // 게시글 링크: <a></a>태그 대신 사용
+        </nav>
+      </header>        
+
 {children}
       </body>
+      <footer>
+        <p>Copyright 2026. 강은혜. All rights reserved.</p>
+      </footer>
     </html>
   );
 }
