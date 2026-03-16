@@ -1,3 +1,6 @@
+26년 03월 16일
+Spring, nextjs연동 프론트엔드 실습 레포지토리입니다.
+
 This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
 
 ## Getting Started
