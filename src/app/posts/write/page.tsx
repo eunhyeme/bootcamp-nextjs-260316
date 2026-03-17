@@ -1,6 +1,10 @@
 "use client";
 
+import { useRouter } from "next/navigation";
+
 export default function Write() {
+
+    const router = useRouter();
 
     const onSubmitHandler = (e: any) => {
         e.preventDefault();;
@@ -14,8 +18,20 @@ export default function Write() {
             return;
         }
 
+        if (title.value.length >= 10 || title.value.length < 2) {
+            alert("2글자 이상 10자 미만으로 작성해주세요");
+            title.focus();
+            return;
+        }
+
         if (content.value.length === 0) {
             alert("내용을 입력해주세요.");
+            content.focus();
+            return;
+        }
+
+        if (content.value.length >= 100 || content.value.length < 2) {
+            alert("2글자 이상 100자 미만으로 작성해주세요");
             content.focus();
             return;
         }
@@ -32,9 +48,11 @@ export default function Write() {
             })
         })
             .then(response => response.json())
-            .then(data => {
-                console.log(data);
-            })
+            .then(rs => {
+                alert(rs.msg);
+                // 글 상세 페이지로 이동
+                router.push(`/posts/${rs.data.postDto.id}`)
+            });
     }
 
     return (
