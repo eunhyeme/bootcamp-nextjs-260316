@@ -30,16 +30,17 @@ export default function RootLayout({
       >
       <header>
         <nav>
-          <Link href="/">Home</Link> // 홈페이지 링크: <a></a>태그 대신 사용
-          <Link href="/posts">Posts</Link> // 게시글 링크: <a></a>태그 대신 사용
+          <Link href="/">Home</Link> 
+          <Link href="/posts">Posts</Link> 
         </nav>
       </header>        
 
-{children}
-      </body>
+    {children}
       <footer>
         <p>Copyright 2026. 강은혜. All rights reserved.</p>
       </footer>
+      </body>
+
     </html>
   );
 }

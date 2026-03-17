@@ -16,6 +16,7 @@ export default function Home() {
         //컴포넌트가 실행되자마자 실행되는 함수, 
         // 그뒤로는 실행되지 않아서 두번째 인자로 빈 배열을 넣어줌
         
+        //promise 체이닝이란? 비동기 처리를 위한 체인 형태의 패턴
         fetch("http://localhost:8080/api/v1/posts")
         //fetch코드는  spring 58강 참고
         .then(response => response.json())
