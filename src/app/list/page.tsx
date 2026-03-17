@@ -29,12 +29,17 @@ export default function Home() {
 
 
     return (
-            <ul>
-                {posts.map((post) => (
+       
+            <ul> 
+        {posts.length==0 ? (
+            <li>Loading...</li>
+        ):(
+                    posts.map((post) => (
                     <li key={post.id} className="p-2">
                         {post.title}
                     </li>
-                ))}
+                ))
+        )}
             </ul>
     )
 }
