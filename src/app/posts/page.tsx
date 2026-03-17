@@ -1,46 +1,37 @@
-'use client';
-import { useState, useEffect } from "react";
+"use client"
 
-//3. interface를 사용하여 타입을 정의
-interface Post {
-    id: number;
-    title: string;
+import Link from "next/link";
+import { useEffect, useState } from "react";
+
+export interface Post {
+    id: number,
+    title: string,
+    content: string
 }
 
 export default function Home() {
 
-    //2. useState에 타입을 정의
-    const [posts, setPosts] = useState<{id:number, title:string}[]>([]);
-    
-    useEffect(() => { 
-        //컴포넌트가 실행되자마자 실행되는 함수, 
-        // 그뒤로는 실행되지 않아서 두번째 인자로 빈 배열을 넣어줌
-        
-        //promise 체이닝이란? 비동기 처리를 위한 체인 형태의 패턴
-        fetch("http://localhost:8080/api/v1/posts")
-        //fetch코드는  spring 58강 참고
-        .then(response => response.json())
-        .then(data => { 
-            console.log(data)
+    const [posts, setPosts] = useState<Post[]>([]);
 
-            //1&3 setPosts에 타입을 정의
-            setPosts(data as Post[]);
-        });
-    }, []); 
+    useEffect(() => {
+        fetch("http://localhost:8080/api/v1/posts")
+            .then(response => response.json())
+            .then(data => {
+                console.log(data)
+                setPosts(data);
+            });
+    }, []);
 
 
     return (
-       
-            <ul> 
-        {posts.length==0 ? (
-            <li>Loading...</li>
-        ):(
-                    posts.map((post) => (
+        posts.length <= 0
+            ? <div>로딩중..</div>
+            : <ul>
+                {posts.map((post) => (
                     <li key={post.id} className="p-2">
-                        {post.title}
+                        <Link href={`/posts/${post.id}`}>{post.id}. {post.title}</Link>
                     </li>
-                ))
-        )}
+                ))}
             </ul>
     )
 }
